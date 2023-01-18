@@ -1,7 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:invoconnection/layout/cubit/cubit.dart';
 import 'package:invoconnection/modules/search_for_user/cubit/cubit.dart';
 import 'package:invoconnection/modules/search_for_user/cubit/states.dart';
 import 'package:invoconnection/shared/components/components.dart';
@@ -22,7 +21,7 @@ class ConnectionAppSearchUserScreen extends StatelessWidget {
       child: BlocConsumer<ConnectionAppSearchUsersCubit,ConnectionAppSearchUserStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          var cubit = ConnectionAppSearchUsersCubit.get(context);
+        //  var cubit = ConnectionAppSearchUsersCubit.get(context);
           return Scaffold(
             appBar: defaultAppBar(
                 context: context,
@@ -30,11 +29,11 @@ class ConnectionAppSearchUserScreen extends StatelessWidget {
             ),
             body: Form(
               key: formKey,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    defaultFormFieldWithStyle(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: defaultFormFieldWithStyle(
                       context: context,
                       controller: searchController,
                       type: TextInputType.text,
@@ -53,33 +52,33 @@ class ConnectionAppSearchUserScreen extends StatelessWidget {
                       onSubmit: (text){
                         if(formKey.currentState!.validate())
                         {
-                   //       cubit.search(text: text);
+                 //       cubit.search(text: text);
 
                         }
                       },
                       onTap: () {},
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    if(state is ConnectionAppSearchUserLoadingStates)
-                      const LinearProgressIndicator(),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  if(state is ConnectionAppSearchUserLoadingStates)
+                    const LinearProgressIndicator(),
 
-                  //  if(state is ConnectionAppSearchSuccessStates)
-                      ConditionalBuilder(
-                        condition: true,
-                        builder: (context) => Expanded(
-                          child: ListView.separated(
-                              physics: const BouncingScrollPhysics(),
-                              itemBuilder: (context, index) => buildUserSearchItem(context,isAdmin: isAdmin), //cubit.searchModel.data!.data![index],
-                              separatorBuilder: (context, index) => SizedBox(height: 10,),
-                              itemCount: 10
-                          ),
+                //  if(state is ConnectionAppSearchSuccessStates)
+                    ConditionalBuilder(
+                      condition: true,
+                      builder: (context) => Expanded(
+                        child: ListView.separated(
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) => buildUserSearchItem(context,isAdmin: isAdmin), //cubit.searchModel.data!.data![index],
+                            separatorBuilder: (context, index) => SizedBox(height: 10,),
+                            itemCount: 10
                         ),
-                        fallback: (context) => const Center(child: CircularProgressIndicator()),
                       ),
-                  ],
-                ),
+                      fallback: (context) => const Center(child: CircularProgressIndicator()),
+                    ),
+                ],
               ),
             ),
           );

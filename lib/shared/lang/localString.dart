@@ -72,7 +72,23 @@ class LocalString extends Translations{
       "posts":"Posts",
       "employees":"Employees",
       "projects":"Projects",
-
+      "notification":"Notification",
+      /// edit
+      "firstName":"First Name ",
+      "lastName":"Last Name ",
+      "headLine":"Headline ",
+      "headLineVerify": "Headline Must not Be Empty",
+      "address":"Address ",
+      "addressVerify": "Address Must not Be Empty",
+      "birthday":"Birthday ",
+      "birthdayVerify": "Birthday Must not Be Empty",
+      "location":"Location",
+      "contact":"Contact info",
+      "country":"Country",
+      "countryVerify": "Country Must not Be Empty",
+      "city":"City",
+      "cityVerify": "City Must not Be Empty",
+      /////
 
       "organizationName":"Organization Name",
       "categoryName":"Category Name",
@@ -157,6 +173,11 @@ class LocalString extends Translations{
       "follow":"تابع +",
       "learnMore":"اعرف أكثر",
       "following":"متابع",
+      "notification":"الإشعارات",
+      "firstName":"First Name *",
+      "lastName":"Last Name *",
+      "headLine":"Headline *",
+      "location":"Location",
     }
 
   };

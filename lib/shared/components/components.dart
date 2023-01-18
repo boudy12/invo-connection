@@ -809,3 +809,39 @@ Widget buildNotificationItem(context,{bool isAdmin = false}) => InkWell(
     ),
   ),
 );
+
+
+Widget buildFiledItem(context,String fieldName, String fieldVerifyName, TextEditingController controller, IconData icon,{bool? isEmail = false, bool? isPhone = false,})=>Container(
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+              fieldName.tr
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: defaultFormFieldWithStyle(
+                context: context,
+                controller: controller,
+                type: isEmail==true ?TextInputType.emailAddress: isPhone==true? TextInputType.phone: TextInputType.name,
+                validate: (value){
+                  if(value!.isEmpty)
+                  {
+                    return fieldVerifyName.tr;
+                  }
+                  return null;
+                },
+                onTap: () {},
+                text:  fieldName.tr,
+                prefixIcon: icon
+            ),
+          ),
+          const SizedBox(height: 15,),
+        ],
+      ),
+    ],
+  ),
+);

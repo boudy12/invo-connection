@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:invoconnection/modules/chat/chat_details.dart';
+import 'package:invoconnection/modules/setting/profile/update/update_profile_screen.dart';
 import 'package:invoconnection/shared/components/components.dart';
 import 'package:invoconnection/shared/components/constants.dart';
 
@@ -37,7 +38,10 @@ class ProfileScreen extends StatelessWidget {
           actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0),
-          child: isProfile == true?  TextButton(onPressed: () {}, child: Text('update'.tr)) : isOrganizationView == true ? TextButton(
+          child: isProfile == true?  IconButton(onPressed: () {
+            navigateTo(context, UpdateProfileScreen());
+          }, icon: Icon(Icons.edit_outlined)
+          ) : isOrganizationView == true ? TextButton(
               onPressed: () {
                 navigateTo(context, ChatDetailsScreen(isAdmin: true,));
               },

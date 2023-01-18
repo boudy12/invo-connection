@@ -5,10 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:invoconnection/layout/connection_layout.dart';
 import 'package:invoconnection/layout/cubit/cubit.dart';
-import 'package:invoconnection/admin/layout/connection_layout.dart';
 import 'package:invoconnection/admin/layout/cubit/cubit.dart';
-import 'package:invoconnection/modules/login/login_screen.dart';
-import 'package:invoconnection/modules/on_boarding/on_boarding_screen.dart';
+
 import 'package:invoconnection/shared/Bloc_Observer.dart';
 import 'package:invoconnection/shared/components/constants.dart';
 import 'package:invoconnection/shared/cubit/cubit.dart';
@@ -45,7 +43,7 @@ void main() async
   // print(userId);
   // print(isArabic1);
   // print(isDark1);
-  Widget widget;
+ // Widget widget;
 
   // if(onBoarding != null)
   // {
@@ -61,9 +59,16 @@ void main() async
   //   widget = OnBoardingScreen();
   // }
 
+ //  runApp(DevicePreview(
+ //    builder:(context) => MyApp(
+ //      isDark: isDark1,
+ // //   startWidget: widget,
+ //      isArabic : isArabic1,
+ //    ),
+ //  ));
   runApp(MyApp(
     isDark: isDark1,
- //   startWidget: widget,
+    //   startWidget: widget,
     isArabic : isArabic1,
   ));
 }
@@ -94,6 +99,7 @@ class MyApp extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return GetMaterialApp(
+      //      builder: DevicePreview.appBuilder,
             translations: LocalString(),
             locale: isArabic1? Locale('ar','AR'): Locale('en','US'),
             theme: lightTheme,
