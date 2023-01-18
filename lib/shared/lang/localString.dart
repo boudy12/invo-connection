@@ -72,6 +72,7 @@ class LocalString extends Translations{
       "posts":"Posts",
       "employees":"Employees",
       "projects":"Projects",
+      "notification":"Notification",
 
 
       "organizationName":"Organization Name",
@@ -157,6 +158,7 @@ class LocalString extends Translations{
       "follow":"تابع +",
       "learnMore":"اعرف أكثر",
       "following":"متابع",
+      "notification":"الإشعارات",
     }
 
   };
