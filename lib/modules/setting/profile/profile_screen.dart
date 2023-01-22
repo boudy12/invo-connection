@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:invoconnection/modules/listener_change/container.dart';
+import 'package:invoconnection/modules/chat/chat_details.dart';
 import 'package:invoconnection/shared/components/components.dart';
 import 'package:invoconnection/shared/components/constants.dart';
 
@@ -38,7 +38,9 @@ class ProfileScreen extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0),
           child: isProfile == true?  TextButton(onPressed: () {}, child: Text('update'.tr)) : isOrganizationView == true ? TextButton(
-              onPressed: () {},
+              onPressed: () {
+                navigateTo(context, ChatDetailsScreen(isAdmin: true,));
+              },
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
@@ -143,7 +145,9 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   if(isPersonView == true)
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          navigateTo(context, ChatDetailsScreen(isAdmin: false,));
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                               color: isDark1

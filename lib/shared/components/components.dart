@@ -4,16 +4,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:invoconnection/admin/modules/setting/organization_profile/organization_profile_screen.dart';
 import 'package:invoconnection/admin/modules/update_task/update_task_screen.dart';
-import 'package:invoconnection/layout/cubit/cubit.dart';
+import 'package:invoconnection/modules/chat/chat_details.dart';
 import 'package:invoconnection/modules/listener_change/container.dart';
-import 'package:invoconnection/modules/login/login_screen.dart';
 import 'package:invoconnection/modules/setting/profile/profile_screen.dart';
 import 'package:invoconnection/modules/view_details/view_task_details_screen.dart';
 import 'package:invoconnection/shared/components/constants.dart';
 import 'package:invoconnection/shared/cubit/cubit.dart';
 import 'package:invoconnection/styles/colors.dart';
 import 'package:invoconnection/styles/icon_broken.dart';
-import 'package:like_button/like_button.dart';
 
 
 Widget defaultButton({
@@ -612,5 +610,202 @@ Widget buildUserSearchItem(context,{bool isAdmin = false}) => InkWell(
 
     ),
 
+  ),
+);
+
+Widget buildUserChatItem(context,{bool isAdmin = false}) => InkWell(
+  onTap: (){
+    navigateTo(
+        context,
+        ChatDetailsScreen(isAdmin: isAdmin,)
+    );
+  },
+  child:   Padding(
+
+    padding: const EdgeInsets.all(12.0),
+
+    child: Row(
+
+      children: [
+
+        const CircleAvatar(
+
+          radius: 25,
+
+          backgroundImage: NetworkImage(
+
+            'https://img.freepik.com/free-photo/young-student-woman-wearing-denim-jacket-eyeglasses-holding-colorful-folders-showing-thumb-up-pink_176532-13861.jpg?w=996&t=st=1669098409~exp=1669099009~hmac=7d85aa6ae99425f855c100600a03d548e82863042c61f2ab28abcd0b4e93098b',
+
+          ),
+
+        ),
+
+        const SizedBox(
+
+          width: 15,
+
+        ),
+
+        Expanded(
+
+          child: Column(
+
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+
+              const Text(
+
+                'Alisa',
+
+                style: TextStyle(height: 1.4),
+
+              ),
+
+              Text(
+
+                'hello',
+
+                style: TextStyle(height: 1.4, fontSize: 12),
+
+                overflow: TextOverflow.ellipsis,
+
+                maxLines: 1,
+
+              ),
+
+            ],
+
+          ),
+
+        ),
+
+        const SizedBox(
+
+          width: 15,
+
+        ),
+
+        Padding(
+
+          padding: const EdgeInsets.all(5.0),
+
+          child: Text(
+            '12:11',
+            style: Theme.of(context).textTheme.caption,
+          )
+
+        ),
+
+      ],
+
+    ),
+
+  ),
+);
+
+Widget buildNotificationItem(context,{bool isAdmin = false}) => InkWell(
+  onTap: (){},
+  child: Container(
+    height: 100,
+    decoration: BoxDecoration(
+        color: defaultColor.withOpacity(0.2)
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+
+          InkWell(
+
+            onTap: () {
+
+
+            },
+
+            child: const CircleAvatar(
+
+              radius: 40,
+
+              backgroundImage: NetworkImage(
+                'https://img.freepik.com/free-photo/young-student-woman-wearing-denim-jacket-eyeglasses-holding-colorful-folders-showing-thumb-up-pink_176532-13861.jpg?w=996&t=st=1669098409~exp=1669099009~hmac=7d85aa6ae99425f855c100600a03d548e82863042c61f2ab28abcd0b4e93098b',
+
+              ),
+
+            ),
+
+          ),
+
+          const SizedBox(
+
+            width: 15,
+
+          ),
+
+          Expanded(
+
+            child: Column(
+
+              crossAxisAlignment: CrossAxisAlignment.start,
+
+              children: [
+
+                const Text(
+
+                  'Alisa',
+
+                  style: TextStyle(height: 1.4),
+
+                ),
+
+                Text(
+
+                  'Yet, there is no doubt that its treasures are immense since RELEM offers great possibilities for inter-District co-operation at many different levels. The scope of this possible co-operation is evident in the latest statistics that indicate that the Region is responsible for almost 400 schools, staffed by almost 28,000 teachers, and catering for nearly 300,000 students.'
+
+                      '  In an age of great mobility',
+
+                  style: TextStyle(height: 1.4, fontSize: 12),
+
+                  overflow: TextOverflow.ellipsis,
+
+                  maxLines: 3,
+
+                ),
+
+              ],
+
+            ),
+
+          ),
+
+          const SizedBox(
+
+            width: 15,
+
+          ),
+
+          InkWell(
+
+            onTap: (){},
+
+            child: const Padding(
+
+                padding: EdgeInsets.all(5.0),
+
+                child: Center(
+                  child: CircleAvatar(
+                    radius: 5,
+                  ),
+                )
+
+            ),
+
+          ),
+
+        ],
+
+      ),
+    ),
   ),
 );
