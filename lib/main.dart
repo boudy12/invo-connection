@@ -1,5 +1,6 @@
 import 'dart:io';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,7 @@ import 'package:invoconnection/layout/cubit/cubit.dart';
 import 'package:invoconnection/admin/layout/cubit/cubit.dart';
 
 import 'package:invoconnection/shared/Bloc_Observer.dart';
+import 'package:invoconnection/shared/components/components.dart';
 import 'package:invoconnection/shared/components/constants.dart';
 import 'package:invoconnection/shared/cubit/cubit.dart';
 import 'package:invoconnection/shared/cubit/states.dart';
@@ -22,21 +24,47 @@ class MyHttpOverrides extends HttpOverrides{
       ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
   }
 }
-
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   // If you're going to use other Firebase services in the background, such as Firestore,
+//   // make sure you call `initializeApp` before using other Firebase services.
+//   await Firebase.initializeApp();
+//
+//   print("Handling a background message: ${message.messageId}");
+// }
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print(message.data.toString());
+  showToast(msg: 'on Background Message', state: ToastStates.SUCCESS);
+}
 void main() async
 {
-
-  WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  var token =await FirebaseMessaging.instance.getToken();
+  print(token);
+  FirebaseMessaging.onMessage.listen((event) {
+    print(event.data.toString());
+    showToast(msg: 'on Message', state: ToastStates.SUCCESS);
+  });
+  FirebaseMessaging.onMessageOpenedApp.listen((event) {
+    print(event.data.toString());
+    showToast(msg: 'on Message Opened App', state: ToastStates.SUCCESS);
+  });
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
+///  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+ // FirebaseMessaging messaging = FirebaseMessaging.instance;
   isDark1 =  CacheHelper.getData(key: 'isDark') ?? false;
   //
+
    isArabic1 =  CacheHelper.getData(key: 'isArabic') ?? false;
   //
   // bool? onBoarding = CacheHelper.getData(key: 'onBoarding');
   //
+
+
   // token = CacheHelper.getData(key: 'token');
   //userId = CacheHelper.getData(key: 'userId');
   // print(token);

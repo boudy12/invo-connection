@@ -43,24 +43,26 @@ dependencies:
   synchronized: ^3.0.0+3
   intl: ^0.17.0
   conditional_builder_null_safety: ^0.0.6
-  bloc: ^7.1.0
-  flutter_bloc: ^7.1.0
+  bloc: ^8.1.0
+  flutter_bloc: ^8.1.1
   dio: ^4.0.6
   hexcolor: ^2.0.7
   shared_preferences: ^2.0.5
-  webview_flutter: ^2.0.0
+  webview_flutter: ^4.0.2
   smooth_page_indicator: ^1.0.0+2
   fluttertoast: ^8.0.8
   carousel_slider: ^4.0.0
+  firebase_core_platform_interface: ^4.5.2
   like_button: ^2.0.4
   flutter_cached_pdfview: ^0.4.1
   flutter_pdfview: ^1.2.5
   path_provider: ^2.0.11
   http: ^0.13.5
-  image_picker: ^0.7.4
-  firebase_messaging: ^13.0.2
-  flutter_local_notifications: ^9.3.2
+  image_picker: ^0.8.6+1
+  firebase_messaging: ^14.2.1
+  flutter_local_notifications: ^13.0.0
   device_preview: ^1.1.0
+  firebase_core: ^2.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
